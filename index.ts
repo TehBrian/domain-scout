@@ -70,11 +70,13 @@ program
     .option("-i, --ignore-unavailable", "print only available domains")
     .option("-m, --max <chars>", "use only TLDs with no more than <max> chars")
     .option("-l, --list <fileName>", "pull TLDs from a specific file")
+    .option("-d, --disable-prefix", "disables that fancy little prefix")
     .action(function (sld: string, options) {
         const ignoreUnavailable: boolean = options.ignoreUnavailable;
         const test: boolean = options.test || ignoreUnavailable;
         const max: number = options.max;
         const listFile: string = options.list;
+        const disablePrefix: boolean = options.disablePrefix;
 
         let rawTldsPromise: Promise<string>;
 
@@ -116,20 +118,27 @@ program
                         isDomainAvailable(domain).then(function (available) {
                             if (available) {
                                 console.log(
-                                    availablePrefix + chalk.green(domain.full())
+                                    disablePrefix
+                                        ? chalk.green(domain.full())
+                                        : availablePrefix +
+                                              chalk.green(domain.full())
                                 );
                             } else {
                                 if (!ignoreUnavailable) {
                                     console.log(
-                                        unavailablePrefix +
-                                            chalk.red(domain.full())
+                                        disablePrefix
+                                            ? chalk.red(domain.full())
+                                            : unavailablePrefix +
+                                                  chalk.red(domain.full())
                                     );
                                 }
                             }
                         });
                     } else {
                         console.log(
-                            unknownPrefix + chalk.yellow(domain.full())
+                            disablePrefix
+                                ? chalk.yellow(domain.full())
+                                : unknownPrefix + chalk.yellow(domain.full())
                         );
                     }
                 }
