@@ -1,8 +1,8 @@
 # From https://tld-list.com/registrars/porkbun/tlds
-com	
-net	
+com
+net
 co	
-org	
+org
 xyz	
 io	
 me	
