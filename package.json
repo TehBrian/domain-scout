@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "description": "A teeny tiny CLI application to find available domains.",
   "main": "index.js",
+  "author": "TehBrian",
+  "license": "MIT",
   "dependencies": {
     "arg": "^4.1.3",
     "buffer-from": "^1.1.1",
@@ -26,8 +28,6 @@
     "type": "git",
     "url": "git+https://github.com/ItsTehBrian/domain-scout.git"
   },
-  "author": "TehBrian",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ItsTehBrian/domain-scout/issues"
   },
