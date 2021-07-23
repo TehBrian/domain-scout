@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
-"use strict";
-
-import * as commander from "commander";
-import * as chalk from "chalk";
-import * as fetch from "node-fetch";
+const nodefetch = require("node-fetch");
+const chalk = require("chalk");
 
 const dnsPromises = require("dns").promises;
 const fs = require("fs").promises;
@@ -19,9 +16,8 @@ const unknownPrefix: string =
 const tldUrl: string = "https://data.iana.org/TLD/tlds-alpha-by-domain.txt";
 
 async function fetchText(url: string): Promise<string> {
-    let response: Response = await fetch(url);
-    let data: string = await response.text();
-    return data;
+    return nodefetch(url)
+        .then((res: any) => res.text());
 }
 
 async function isDomainAvailable(domain: Domain): Promise<boolean> {
@@ -71,7 +67,7 @@ program
     .option("-m, --max <chars>", "use only TLDs with no more than <max> chars")
     .option("-l, --list <fileName>", "pull TLDs from a specific file")
     .option("-d, --disable-prefix", "disables that fancy little prefix")
-    .action(function (sld: string, options) {
+    .action(function (sld: string, options: any) {
         const ignoreUnavailable: boolean = options.ignoreUnavailable;
         const test: boolean = options.test || ignoreUnavailable;
         const max: number = options.max;
@@ -101,8 +97,10 @@ program
         rawTldsPromise.then((rawTlds) => {
             const tlds: Array<string> = rawTlds.split(/[\r\n]+/);
 
-            let header: string = tlds.shift();
-            console.log(chalk.magenta(header));
+            let header: string | undefined = tlds.shift();
+            if (typeof header === "string") {
+                console.log(chalk.magenta(header));
+            }
 
             console.log(
                 chalk.blue(`Checking all TLDs with SLD ${chalk.bold(sld)}.`)
@@ -152,7 +150,7 @@ program
     .option("-i, --ignore-unavailable", "print only available domains")
     .option("-m, --max <chars>", "use only TLDs with no more than <max> chars")
     .option("-l, --list <fileName>", "pull TLDs from a specific file")
-    .action(function (sld: string, fileName: string, options) {
+    .action(function (sld: string, fileName: string, options: any) {
         const ignoreUnavailable: boolean = options.ignoreUnavailable;
         const max: number = options.max;
         const listFile: string = options.list;
@@ -180,8 +178,10 @@ program
         rawTldsPromise.then((rawTlds) => {
             const tlds: Array<string> = rawTlds.split(/[\r\n]+/);
 
-            let header: string = tlds.shift();
-            console.log(chalk.magenta(header));
+            let header: string | undefined = tlds.shift();
+            if (typeof header === "string") {
+                console.log(chalk.magenta(header));
+            }
 
             console.log(
                 chalk.blue(`Checking all TLDs with SLD ${chalk.bold(sld)}.`)
