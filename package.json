@@ -3,8 +3,23 @@
   "version": "0.1.0",
   "description": "A teeny tiny CLI application to find available domains.",
   "main": "index.js",
+  "scripts": {
+    "run": "./node_modules/ts-node/dist/bin.js index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehBrian/domain-scout.git"
+  },
+  "keywords": [
+    "cli"
+  ],
   "author": "TehBrian",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TehBrian/domain-scout/issues"
+  },
+  "homepage": "https://github.com/TehBrian/domain-scout#readme",
   "dependencies": {
     "arg": "^4.1.3",
     "buffer-from": "^1.1.1",
@@ -20,18 +35,6 @@
     "typescript": "^4.3.2",
     "yn": "^3.1.1"
   },
-  "scripts": {
-    "run": "./node_modules/ts-node/dist/bin.js index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TehBrian/domain-scout.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TehBrian/domain-scout/issues"
-  },
-  "homepage": "https://github.com/TehBrian/domain-scout#readme",
   "devDependencies": {
     "@types/node": "^15.12.1"
   }
