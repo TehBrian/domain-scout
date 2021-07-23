@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ItsTehBrian/domain-scout.git"
+    "url": "git+https://github.com/TehBrian/domain-scout.git"
   },
   "bugs": {
-    "url": "https://github.com/ItsTehBrian/domain-scout/issues"
+    "url": "https://github.com/TehBrian/domain-scout/issues"
   },
-  "homepage": "https://github.com/ItsTehBrian/domain-scout#readme",
+  "homepage": "https://github.com/TehBrian/domain-scout#readme",
   "devDependencies": {
     "@types/node": "^15.12.1"
   }
