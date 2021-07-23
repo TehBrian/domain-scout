@@ -3,7 +3,8 @@
 
     "compilerOptions": {
         "preserveConstEnums": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "outDir": "dist"
     },
 
     "include": ["src/**/*"],

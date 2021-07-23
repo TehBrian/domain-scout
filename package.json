@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A teeny tiny CLI application to find available domains.",
   "main": "index.js",
+  "bin": {
+    "domain-scout": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node src/index.js",
